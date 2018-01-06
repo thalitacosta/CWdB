@@ -13,6 +13,7 @@
         <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
 
         <script type="text/javascript" src="index_map.js"></script>
+        
 
         <link rel="stylesheet" href="index.css">
 
@@ -27,11 +28,23 @@
         <div id="over_map">
             <div class="box box-solid bg-green-gradient">
                 <div class="box-header ui-sortable-handle">
-                    <i class="fa fa-calendar"></i>
-        
-                    <h3 class="box-title">Filtrar por Data</h3>
-        
-                    <input type="text" name="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
+                    
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <div class="col-xs-10">
+                            <input type="text" name="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div id="tab" class="btn-group" data-toggle="buttons-radio">
+                            <button id="markers" type="button" class="btn btn-large btn-info active">Markers</button>
+                            <button id="heatMap" type="button" class="btn btn-large btn-info">Mapa de Calor</button>
+                        </div>                                        
+                    </div>
+
                 </div>
             </div>
         
@@ -70,6 +83,8 @@
                 }
             });
         </script>        
+
+        <script type="text/javascript" src="index_callbacks.js"></script>
 
     </body>
 
