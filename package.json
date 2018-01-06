@@ -1,0 +1,27 @@
+{
+  "name": "cwdb_nodejs",
+  "version": "1.0.0",
+  "description": "TCC project done by Guilherme Ono Sens, Josnei Olszewski Jr and Thalita Costa. Electronics Engineering, UTFPR, Brazil. Class of 2017.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josneijr/CWdB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josneijr/CWdB/issues"
+  },
+  "homepage": "https://github.com/josneijr/CWdB#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "pg": "^7.4.1",
+    "sequelize": "^4.29.0",
+    "serve-favicon": "^2.4.5"
+  }
+}
