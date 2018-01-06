@@ -25,6 +25,7 @@ app.set('view engine', 'ejs');
 
 // set resources dirs
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/static'));
 app.use(express.static(__dirname + '/static/css'));
 app.use(express.static(__dirname + '/static/js'));
 

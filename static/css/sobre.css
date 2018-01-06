@@ -1,0 +1,13 @@
+.callout
+{
+    margin: 40px 150px;
+}
+
+.widget-user .widget-user-header
+{
+    height: 150px;
+}
+
+.widget-user .widget-user-image {
+    top: 100px;
+}
