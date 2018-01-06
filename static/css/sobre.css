@@ -11,3 +11,7 @@
 .widget-user .widget-user-image {
     top: 100px;
 }
+
+body {
+    font-family: 'Oxygen';
+}

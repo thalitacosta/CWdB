@@ -1,39 +1,41 @@
-<header class="main-header">
-    <nav class="navbar navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a href="/" class="navbar-brand" style="font-size: 24px; font-family: 'Montserrat'">
-                    <b>CWdB</b>
-                </a>
-
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
+<div class="wrapper">
+    <header class="main-header">
+        <nav class="navbar navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand" style="font-size: 24px; font-family: 'Montserrat'">
+                        <b>CWdB</b>
+                    </a>
+    
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+    
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                            <a href="/">
+                                <i class="ion ion-map"></i>
+                                Mapa
+                            </a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Analysis" ? "active" : "")">
+                            <a href="tabela">
+                                <i class="ion ion-stats-bars"></i>
+                                Análises
+                            </a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")">
+                            <a href="sobre">
+                                <i class="ion ion-information-circled"></i>
+                                Sobre
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                        <a href="/">
-                            <i class="ion ion-map"></i>
-                            Mapa
-                        </a>
-                    </li>
-                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Analysis" ? "active" : "")">
-                        <a href="@Url.Action("Analysis", "Home")">
-                            <i class="ion ion-stats-bars"></i>
-                            Análises
-                        </a>
-                    </li>
-                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")">
-                        <a href="@Url.Action("About", "Home")">
-                            <i class="ion ion-information-circled"></i>
-                            Sobre
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
+</div>
