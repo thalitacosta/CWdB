@@ -40,8 +40,8 @@
 
                     <div class="row">
                         <div id="tab" class="btn-group" data-toggle="buttons-radio">
-                            <button id="markers" type="button" class="btn btn-large btn-info active">Markers</button>
-                            <button id="heatMap" type="button" class="btn btn-large btn-info">Mapa de Calor</button>
+                            <button id="markers" type="button" class="btn btn-large btn-info">Markers</button>
+                            <button id="heatMap" type="button" class="btn btn-large btn-info active">Mapa de Calor</button>
                         </div>                                        
                     </div>
 
@@ -65,7 +65,13 @@
         
                 map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-                AdicionaPontosTeste();
+                var samples = [
+                    {lat: -25.45, long: -49.26, dB: 40}, 
+                    {lat: -25.45, long: -49.27, dB: 100}, 
+                    {lat: -25.45, long: -49.28, dB: 150}
+                ];
+
+                AddMapData(samples, true, true);
             }
         
         </script>

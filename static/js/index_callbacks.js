@@ -1,7 +1,15 @@
-$('#markers').click(function(){
-    alert('1');
+$('#markers').click(function(obj){
+    $("#heatMap").removeClass("active");
+    $("#markers").addClass("active");
+
+    //Mudar para markers
+
 });
 
-$('#heatMap').click(function(){
-    alert('2');
+$('#heatMap').click(function(obj){
+    $("#markers").removeClass("active");
+    $("#heatMap").addClass("active");
+
+    //Mudar para heatMap
+    
 });

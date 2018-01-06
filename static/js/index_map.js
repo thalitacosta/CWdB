@@ -1,29 +1,35 @@
 var map = null;
 
-function AdicionaPontosTeste()
+function AddMapData(mapData, markersActive, heatMapActive)
 {
-      var heatMapData = [
-        {location: new google.maps.LatLng(-25.451, -49.26), weight: 60},
-        {location: new google.maps.LatLng(-25.452, -49.26), weight: 80},
-        {location: new google.maps.LatLng(-25.453, -49.26), weight: 100},
-        {location: new google.maps.LatLng(-25.454, -49.26), weight: 80}
-      ];
+    if(markersActive)
+    {
+        mapData.forEach(element => {
+            addMarker(element.lat, element.long, element.dB);
+        });
+    }
 
-      var gradientColors = [
-        'rgba(0, 255, 0, 0)',
-        'rgba(255, 0, 0, 1)'
-    ]
+    if(heatMapActive)
+    {
+        var heatMapData = [];
 
-      var heatmap = new google.maps.visualization.HeatmapLayer({
-        data: heatMapData,
-        map: map,
-        radius: 40
-      });
+        mapData.forEach(element => {
+            heatMapData.push({location: new google.maps.LatLng(element.lat, element.long), weight: element.dB});
+            console.log(heatMapData);
+        });
+
+        var heatmap = new google.maps.visualization.HeatmapLayer({
+            data: heatMapData,
+            map: map,
+            radius: 40
+          });        
+    }
 }
 
-function addMarker(location) {
+function addMarker(latitude, longitude, dB) {
     marker = new google.maps.Marker({
-        position: location,
-        map: map
+        position: {lat: latitude, lng: longitude},
+        map: map,
+        title: String(dB) + ' dB'
     });
 }
