@@ -12,6 +12,62 @@
     <body class="hold-transition skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
         
         <% include partials/header %>
+        
+        <div id="map" class="col-xs-12"></div>
+        
+        <div id="over_map">
+            <div class="box box-solid bg-green-gradient">
+                <div class="box-header ui-sortable-handle">
+                    <i class="fa fa-calendar"></i>
+        
+                    <h3 class="box-title">Filtrar por Data</h3>
+        
+                    <input type="text" name="daterange" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
+                </div>
+            </div>
+        
+        </div>
+        
+        <!-- SCRIPTS DO MAPA -->
+        <script>
+        
+            function myMap()
+            {
+                var mapOptions = {
+                    center: new google.maps.LatLng(-25.45, -49.26),
+                    zoom: 12,
+                    mapTypeControlOptions: {
+                        mapTypeIds: [google.maps.MapTypeId.ROADMAP]
+                    },
+                    mapTypeId: google.maps.MapTypeId.roadmap
+        
+                }
+        
+                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            }
+        
+        </script>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2NrBR3ZlTLNT0jFm8-FooJAKxTjPTRgs&callback=myMap"></script>
+        
+        <!-- Include Required Prerequisites -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        
+        <!-- Include Date Range Picker -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+        
+        <!-- SCRIPTS DO DATE/TIME PICKER -->
+        <script>
+            $('input[name="daterange"]').daterangepicker({
+                timePicker: true,
+                timePicker24Hour: true,
+                timePickerIncrement: 1,
+                locale: {
+                    format: 'DD/MM/YYYY hh:mm'
+                }
+            });
+        </script>        
 
     </body>
 
