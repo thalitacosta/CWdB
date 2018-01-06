@@ -4,12 +4,21 @@
         <title>CWdB - SOBRE</title>
 
         <% include partials/head %>
-        
+
+        <!-- Include Required Prerequisites -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+        <!-- Include Date Range Picker -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+
+        <script type="text/javascript" src="index_map.js"></script>
+
         <link rel="stylesheet" href="index.css">
 
     </head>
 
-    <body class="hold-transition skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
+    <body class="hold-transition skin-blue layout-top-nav">
         
         <% include partials/header %>
         
@@ -30,7 +39,7 @@
         
         <!-- SCRIPTS DO MAPA -->
         <script>
-        
+
             function myMap()
             {
                 var mapOptions = {
@@ -38,25 +47,18 @@
                     zoom: 12,
                     mapTypeControlOptions: {
                         mapTypeIds: [google.maps.MapTypeId.ROADMAP]
-                    },
-                    mapTypeId: google.maps.MapTypeId.roadmap
-        
+                    },                      
                 }
         
-                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+                AdicionaPontosTeste();
             }
         
         </script>
         
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2NrBR3ZlTLNT0jFm8-FooJAKxTjPTRgs&callback=myMap"></script>
-        
-        <!-- Include Required Prerequisites -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        
-        <!-- Include Date Range Picker -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2NrBR3ZlTLNT0jFm8-FooJAKxTjPTRgs&callback=myMap&libraries=visualization"></script>
+               
         <!-- SCRIPTS DO DATE/TIME PICKER -->
         <script>
             $('input[name="daterange"]').daterangepicker({

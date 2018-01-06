@@ -1,5 +1,7 @@
 body {
     font-family: 'Oxygen';
+    height: auto; 
+    min-height: 100%;
 }
 
 #map {

@@ -1,3 +1,15 @@
 body {
     font-family: 'Oxygen';
+    min-height: 100%;
+    height: auto; 
+}
+
+.info-box {
+    margin-top: 15px;
+    margin-left: 10px;
+    box-shadow: 4px 4px 10px grey;
+}
+
+.info-box-div {
+    padding-right: 40px;
 }
