@@ -57,3 +57,18 @@ app.post('/testPassword', function(req, res){
     else
         res.json({ ok: 0 });
 });
+
+app.get('*', (req, res) => {
+    if (req.accepts('html')) {
+        // Respond with html page.
+        res.render('404');
+    }
+    else if (req.accepts('json')) {
+        // Respond with json.
+        res.status(404).send({ error: 'Not found' });
+    }
+    else {
+        // Default to plain-text. send()
+        res.status(404).type('txt').send('Not found');
+    }
+});
