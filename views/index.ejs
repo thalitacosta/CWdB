@@ -39,11 +39,9 @@
                     </div>
 
                     <div class="row">
-                        <div id="tab" class="btn-group" data-toggle="buttons-radio">
-                            <button id="markers" type="button" class="btn btn-large btn-info">Markers</button>
-                            <button id="heatMap" type="button" class="btn btn-large btn-info active">Mapa de Calor</button>
-                        </div>                                        
-                    </div>
+                        <button id="markers" type="button" class="btn btn-large btn-info">Markers</button>
+                        <button id="heatMap" type="button" class="btn btn-large btn-info active">Mapa de Calor</button>
+                    </div>  
 
                 </div>
             </div>
@@ -71,7 +69,8 @@
                     {lat: -25.45, long: -49.28, dB: 150}
                 ];
 
-                AddMapData(samples, true, true);
+                CreateMarkers(samples);
+                CreateHeatMap(samples);
             }
         
         </script>

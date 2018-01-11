@@ -1,15 +1,25 @@
 $('#markers').click(function(obj){
-    $("#heatMap").removeClass("active");
-    $("#markers").addClass("active");
-
-    //Mudar para markers
-
+    if($("#markers").hasClass("active"))
+    {
+        $("#markers").removeClass("active");
+        SetMarkersVisibility(false);
+    }
+    else
+    {
+        $("#markers").addClass("active");
+        SetMarkersVisibility(true);
+    }    
 });
 
 $('#heatMap').click(function(obj){
-    $("#markers").removeClass("active");
-    $("#heatMap").addClass("active");
-
-    //Mudar para heatMap
-    
+    if($("#heatMap").hasClass("active"))
+    {
+        $("#heatMap").removeClass("active");
+        SetHeatMapVisibility(false);
+    }
+    else
+    {
+        $("#heatMap").addClass("active");
+        SetHeatMapVisibility(true);
+    }    
 });

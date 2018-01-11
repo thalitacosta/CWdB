@@ -7,12 +7,68 @@ const Sequelize = require('sequelize');
 
 var app = express();
 // Or you can simply use a connection uri
-const sequelize = new Sequelize('postgres://fxvjezhycyjywd:26fbcc9253c7f339ea27e5d63f8eb7d9ef75abbed2b43fc9b87c28399dc6162d@ec2-54-235-244-185.compute-1.amazonaws.com:5432/d6t9cd4kn7qvof');
+const sequelize = new Sequelize('d1kh27c8o2l0fs', 'otnvrlqgbycpkc', 'de77ec57a12623f410456b9f049e71c974c15a81197ceef08067e777ddbe8bcf', {
+    host: 'ec2-107-21-224-61.compute-1.amazonaws.com',
+    port: 5432,
+    dialect: 'postgres',
+
+    dialectOptions: {
+        ssl: true
+      },
+
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    }
+});
+
+
+const Sample = sequelize.define('sample', {
+    data: {
+      type: Sequelize.DATEONLY
+    },
+    latitude: {
+      type: Sequelize.FLOAT
+    },
+    longitude: {
+        type: Sequelize.FLOAT
+      },
+    amplitude: {
+        type: Sequelize.FLOAT
+    }
+});  
 
 sequelize
   .authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
+
+      // force: true will drop the table if it already exists
+    Sample.sync({force: false}).then(() => {
+        // Table created
+        Sample.create({
+            data: '2018-01-07',
+            latitude: -25.45,
+            longitude: -49.26,
+            amplitude: 70.8
+        });
+
+        Sample.create({
+            data: '2018-01-07',
+            latitude: -25.45,
+            longitude: -49.28,
+            amplitude: 85.7
+        });
+
+        Sample.create({
+            data: '2018-01-07',
+            latitude: -25.45,
+            longitude: -49.29,
+            amplitude: 80.1
+        });
+  }); 
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);

@@ -1,35 +1,45 @@
 var map = null;
+var heatmap = null;
+var markers = [];
 
-function AddMapData(mapData, markersActive, heatMapActive)
+function CreateMarkers(mapData)
 {
-    if(markersActive)
-    {
-        mapData.forEach(element => {
-            addMarker(element.lat, element.long, element.dB);
-        });
-    }
-
-    if(heatMapActive)
-    {
-        var heatMapData = [];
-
-        mapData.forEach(element => {
-            heatMapData.push({location: new google.maps.LatLng(element.lat, element.long), weight: element.dB});
-            console.log(heatMapData);
-        });
-
-        var heatmap = new google.maps.visualization.HeatmapLayer({
-            data: heatMapData,
-            map: map,
-            radius: 40
-          });        
-    }
+    mapData.forEach(element => {
+        AddMarker(element.lat, element.long, element.dB);
+    });
 }
 
-function addMarker(latitude, longitude, dB) {
-    marker = new google.maps.Marker({
-        position: {lat: latitude, lng: longitude},
+function CreateHeatMap(mapData)
+{
+    var heatMapData = [];
+
+    mapData.forEach(element => {
+        heatMapData.push({location: new google.maps.LatLng(element.lat, element.long), weight: element.dB});
+        console.log(heatMapData);
+    });
+
+    heatmap = new google.maps.visualization.HeatmapLayer({
+        data: heatMapData,
         map: map,
+        radius: 40
+        });        
+}
+
+function AddMarker(latitude, longitude, dB) {
+    var marker = new google.maps.Marker({
+        position: {lat: latitude, lng: longitude},
         title: String(dB) + ' dB'
     });
+
+    markers.push(marker);    
+}
+
+function SetMarkersVisibility(visible){
+    markers.forEach(element => {
+        element.setMap(visible ? map : null);
+    });
+}
+
+function SetHeatMapVisibility(visible){
+    heatmap.setMap(visible ? map : null);
 }
