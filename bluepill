@@ -1,0 +1,77 @@
+#include "stm32f103c8t6.h"
+#include "mbed.h"
+#include "rtos.h"
+#include "TCPSocket.h"
+#include "ESP8266Interface.h"
+#include "TinyGPSPlus.h"
+
+Mutex memory; 
+Thread wifi; 
+Thread data;
+
+bool connection;
+bool timer;
+int* Buffer = 0;
+int* ptr;
+int n=0;
+int values[5];
+int value;
+int i = 0;
+
+void W_thread() {
+    while (connection == 0) {}
+	if( connection == 1){
+	 if(Buffer != NULL){ 
+	 memory.lock();
+	
+	
+    
+	 free(Buffer);
+     Buffer = 0;
+	 n=0;
+        Thread::wait(1000);
+		
+		memory.unlock();
+		}
+		}
+}
+
+void D_thread() {
+
+	 while (time == 0) {}
+	 if (time == 1){
+	 n=n+1;
+	 Buffer = (long*) realloc( Buffer, n * sizeof(long));
+	 if(Buffer == NULL){
+	 printf("Sem espaço suficiente\n");}
+	 memory.lock();
+	 
+	 for (i>=0, i<=4, i++){
+	 if (values[i] <= 25)
+	 {
+		 values[i] = 25;
+	 }
+	 }
+	 value = (values[0] + values[1] + values[2] + values[3] + values[4])/5
+	 time = 0;
+	 memory.unlock();
+	 }
+	 
+		  
+	 
+	 
+	 
+ 
+int main() {
+    thread.start(W_thread);
+	thread.start(D_thread);
+    
+    while (true) {
+        led1 = !led1;
+        Thread::wait(500);
+    }
+}
+
+
+    printf("\r\nDone\r\n");
+}
